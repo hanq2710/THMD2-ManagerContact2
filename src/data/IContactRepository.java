@@ -5,11 +5,13 @@ import data.entitis.Contact;
 import java.util.ArrayList;
 
 public interface IContactRepository {
-    public void addContact(Contact contact);
-    public Contact checkInfo(String info);
-    public void updateContact(String phone, Contact contact);
-    public void deleteContact(String phone);
-    public Contact[] searchEmployee(String info);
-    public ArrayList<Contact> displayContact();
+    void addContact(Contact contact);
+    Contact checkInfo(String info);
+    void updateContact(String phone, Contact contact);
+    void deleteContact(String phone);
+    Contact[] searchEmployee(String info);
+    void setPathAndData(String path);
+
+    ArrayList<Contact> displayContact();
 
 }

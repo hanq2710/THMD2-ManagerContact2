@@ -40,6 +40,13 @@ public class Main {
                 case 5:
                     contactService.searchContact();
                     break;
+                case 6:
+                    contactService.readFile();
+                    break;
+                case 7:
+                    contactService.writeFile();
+                    break;
+
             }
         }
     }

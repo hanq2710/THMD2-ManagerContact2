@@ -3,6 +3,7 @@ package data.entitis;
 import java.io.Serializable;
 
 public class Contact implements Serializable {
+    private static final long serialVersionUID = -8303692926620559452L;
     private String name;
     private String phone;
     private String address;

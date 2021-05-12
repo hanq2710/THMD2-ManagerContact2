@@ -1,18 +1,17 @@
 package data;
 
 import data.entitis.Contact;
-import service.IContactService;
-
 import java.util.ArrayList;
 
 public class ContactRepository implements IContactRepository {
-    private IContactService contactService;
+
 
     FileFactory fileFactory;
     ArrayList<Contact> arrayList;
+    private String path = "Contact.csv";
     public ContactRepository(){
-    fileFactory = new FileFactory();
-    arrayList = fileFactory.readContact("Contact.csv");
+        fileFactory = new FileFactory();
+        arrayList = fileFactory.readContact(path);
     }
     @Override
     public ArrayList<Contact> displayContact(){
@@ -25,7 +24,7 @@ public class ContactRepository implements IContactRepository {
     @Override
     public void addContact(Contact contact){
     arrayList.add(contact);
-    fileFactory.writeContact("Contact.csv", arrayList);
+    fileFactory.writeContact(this.path, arrayList);
         System.out.println("Thêm thành công ..!");
     }
     @Override
@@ -37,7 +36,7 @@ public class ContactRepository implements IContactRepository {
         for (int i = 0; i < arrayList.size(); i++) {
             if(phone.equals(arrayList.get(i).getPhone())){
                 arrayList.set(i,contact);
-                fileFactory.writeContact("Contact.csv",arrayList);
+                fileFactory.writeContact(this.path, arrayList);
                 System.out.println("Câp nhật thành công");
             }
         }
@@ -47,7 +46,7 @@ public class ContactRepository implements IContactRepository {
         for (int i = 0; i < arrayList.size(); i++) {
             if (phone.equals(arrayList.get(i).getPhone())) {
             arrayList.remove(i);
-            fileFactory.writeContact("Contact.csv",arrayList);
+            fileFactory.writeContact(this.path, arrayList);
                 System.out.println("Xóa thành công..!");
             }
         }
@@ -56,5 +55,10 @@ public class ContactRepository implements IContactRepository {
     public Contact[] searchEmployee(String info){
         return arrayList.stream().filter(
                 o -> info.equals(o.getName()) || info.equals(o.getPhone())).toArray(Contact[]::new);
+    }
+
+    public void setPathAndData(String path){
+        this.path = path;
+        this.arrayList = fileFactory.readContact(this.path);
     }
 }

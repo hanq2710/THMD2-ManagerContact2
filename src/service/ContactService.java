@@ -66,6 +66,17 @@ public class ContactService implements IContactService{
         contactRepository.deleteContact(phone);
 
     }
+    public void  readFile(){
+        System.out.println("Nhập file: ");
+        Scanner sc = new Scanner(System.in);
+        contactRepository.setPathAndData(sc.nextLine());
+
+    }
+    public String writeFile(){
+        System.out.println("Nhập file: ");
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
     public void searchContact(){
         Contact [] listSearchContact;
         Scanner sc = new Scanner(System.in);

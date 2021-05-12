@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 
 public class FileFactory<E>  {
+    public FileFactory() {
+    }
+
     // Đọc File
     public ArrayList<E> readContact(String path) {
         File file = new File(path);
@@ -44,6 +47,7 @@ public class FileFactory<E>  {
         try {
             fileOutputStream = new FileOutputStream(path);
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
             objectOutputStream.writeObject(arrayList);
         }catch (Exception ex){
             ex.printStackTrace();
